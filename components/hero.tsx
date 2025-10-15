@@ -140,7 +140,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="hero-badge">
+          <div className="hero-badge hidden md:flex">
             <div className="hero-avatars">
               {[1, 2, 3, 4].map((i) => (
                 <div

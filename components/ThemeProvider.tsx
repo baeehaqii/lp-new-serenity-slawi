@@ -15,13 +15,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>('light');
 
     useEffect(() => {
-        // Check localStorage or system preference
-        const storedTheme = localStorage.getItem('theme') as Theme ||
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        // Check localStorage, default to light
+        const storedTheme = (localStorage.getItem('theme') as Theme) || 'light';
         setTheme(storedTheme);
 
         if (storedTheme === 'dark') {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 
