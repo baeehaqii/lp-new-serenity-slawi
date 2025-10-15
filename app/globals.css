@@ -1041,31 +1041,11 @@ a {
 /* Mobile responsive adjustments */
 @media (max-width: 767px) {
   .hero-badge {
-    bottom: 1rem;
-    right: 1rem;
-    padding: 0.75rem 1rem;
-    font-size: 0.75rem;
-  }
-
-  .hero-avatar {
-    width: 30px;
-    height: 30px;
-  }
-
-  .hero-badge-text span:first-child {
-    font-size: 0.75rem;
-  }
-
-  .hero-stars {
-    font-size: 0.7rem;
-  }
-
-  .hero-rating {
-    font-size: 0.7rem;
+    display: none !important;
   }
 
   .hero-dots {
-    bottom: 4.5rem;
+    bottom: 2rem;
   }
 }
 
