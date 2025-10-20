@@ -42,9 +42,12 @@ export default function Accessibility() {
 
         <div className="accessibility-grid">
           {facilities.map((facility, index) => (
-            <div key={index} className="accessibility-card">
-              <div className="accessibility-icon">{facility.icon}</div>
-              <h3 className="accessibility-title">{facility.title}</h3>
+            <div key={index} className="accessibility-card about-stat-card">
+              <div className="accessibility-header">
+                <div className="accessibility-icon">{facility.icon}</div>
+                <h3 className="accessibility-title">{facility.title}</h3>
+              </div>
+
               <ul className="accessibility-list">
                 {facility.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="accessibility-item">

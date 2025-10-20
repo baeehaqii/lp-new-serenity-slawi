@@ -129,7 +129,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero-dots">
+          <div className="hero-dots mt-36">
             {heroSlides.map((_, index) => (
               <button
                 key={index}

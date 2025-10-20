@@ -5,6 +5,7 @@ import About from "@/components/about"
 import Properties from "@/components/properti"
 import Features from "@/components/features"
 import Gallery from "@/components/gallery"
+import YouTube from "@/components/youtube"
 import Testimonials from "@/components/testimoni"
 import FAQ from "@/components/faq"
 import CallToAction from "@/components/cta"
@@ -19,10 +20,11 @@ export default function HomePage() {
       <Hero />
       <About />
       <Properties />
-      <Features />
       <Accessibility />
+      <Features />
       <Concepts />
       <Gallery />
+      <YouTube />
       <Testimonials />
       <FAQ />
       <CallToAction />

@@ -1047,6 +1047,28 @@ a {
   .hero-dots {
     bottom: 2rem;
   }
+
+  .hero-button-secondary {
+    display: none;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+
+  .hero-button-primary {
+    background-color: #831016;
+    color: white;
+  }
 }
 
 /* Accessibility Section Styles */
@@ -1068,49 +1090,69 @@ a {
 .accessibility-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
 
+@media (min-width: 640px) {
+  .accessibility-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .accessibility-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 .accessibility-card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 1rem;
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
   border: 2px dashed #831016;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .accessibility-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(131, 16, 22, 0.15);
+  background-color: white;
 }
 
 .accessibility-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  margin: 0 auto 1.5rem;
-  background-color: #fff5f5;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
   border-radius: 50%;
 }
 
 .accessibility-icon svg {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   color: #831016;
-  stroke-width: 2;
+  stroke-width: 1.5;
 }
 
 .accessibility-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
   text-align: center;
   color: #831016;
+  line-height: 1.4;
 }
 
 .accessibility-list {
@@ -1120,12 +1162,12 @@ a {
 }
 
 .accessibility-item {
-  padding: 0.5rem 0;
-  color: #4b5563;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  padding: 0.35rem 0;
+  color: #374151;
+  font-size: 0.85rem;
+  line-height: 1.5;
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .accessibility-item::before {
@@ -1134,7 +1176,7 @@ a {
   left: 0;
   color: #831016;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -1208,7 +1250,7 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #292929;
   border-radius: 9999px;
   color: #4b5563;
   font-weight: 500;
@@ -1233,6 +1275,7 @@ a {
   background-color: #f9fafb;
   border-radius: 1.5rem;
   padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1246,6 +1289,17 @@ a {
 
 .about-stat-label {
   color: #4b5563;
+}
+
+/* If accessibility cards reuse about-stat-card class, ensure they get same visual treatment */
+.accessibility-card.about-stat-card {
+  background-color: #f9fafb;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Media queries for responsiveness */
@@ -1447,6 +1501,38 @@ a {
   border-radius: 0.25rem;
 }
 
+/* Property Slider Arrow Buttons */
+.property-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(156, 156, 156, 0.85);
+  color: white;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.property-slider-arrow:hover {
+  background-color: #831016;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.property-slider-arrow-prev {
+  left: 1rem;
+}
+
+.property-slider-arrow-next {
+  right: 1rem;
+}
+
 @media (max-width: 768px) {
   .property-slider-dots {
     bottom: 0.75rem;
@@ -1460,6 +1546,19 @@ a {
 
   .property-slider-dot.active {
     width: 1.25rem;
+  }
+
+  .property-slider-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .property-slider-arrow-prev {
+    left: 0.5rem;
+  }
+
+  .property-slider-arrow-next {
+    right: 0.5rem;
   }
 }
 
@@ -2159,6 +2258,37 @@ a {
   background-color: #f97316;
 }
 
+/* GMaps Button Styles */
+.siteplan-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.siteplan-gmaps-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2rem;
+  background-color: #831016;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.siteplan-gmaps-button:hover {
+  background-color: #6b0d12;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(131, 16, 22, 0.3);
+}
+
+.siteplan-gmaps-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 @media (max-width: 768px) {
   .siteplan-section {
     padding: 3rem 0;
@@ -2177,6 +2307,11 @@ a {
   .legend-item {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .siteplan-gmaps-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .legend-color {
@@ -2404,23 +2539,23 @@ a {
 }
 
 .dark .accessibility-icon {
-  background-color: #1f2937;
+  background: linear-gradient(135deg, #7f1d1d 0%, #5f0101 100%);
 }
 
 .dark .accessibility-icon svg {
-  color: #f87171;
+  color: #fca5a5;
 }
 
 .dark .accessibility-title {
-  color: #f87171;
+  color: #fca5a5;
 }
 
 .dark .accessibility-item {
-  color: #d1d5db;
+  color: #e5e7eb;
 }
 
 .dark .accessibility-item::before {
-  color: #f87171;
+  color: #fca5a5;
 }
 
 /* Transition effect for all color changes */
@@ -2834,6 +2969,37 @@ a {
   line-height: 1.6;
 }
 
+/* Location GMaps Button Styles */
+.location-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.location-gmaps-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2rem;
+  background-color: #831016;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.location-gmaps-button:hover {
+  background-color: #6b0d12;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(131, 16, 22, 0.3);
+}
+
+.location-gmaps-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 /* Updated location modal zoom icon positioning */
 .location-modal-zoom-icon {
   position: absolute;
@@ -2958,11 +3124,18 @@ a {
   .hero-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
 
   .hero-button {
     width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
     justify-content: center;
+  }
+
+  .hero-button-secondary {
+    display: none;
   }
 
   .hero-badge {
@@ -3010,6 +3183,34 @@ a {
 
   .hero-dot.active {
     width: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider {
+    height: 400px;
+  }
+
+  .hero-image {
+    height: 400px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .hero-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .icon-sm {
+    width: 1rem;
+    height: 1rem;
   }
 }
 
@@ -3122,5 +3323,230 @@ a {
   .whatsapp-button {
     width: 50px;
     height: 50px;
+  }
+}
+
+/* YouTube Section Styles */
+.youtube-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.youtube-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #831016, transparent);
+}
+
+.youtube-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.youtube-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.youtube-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.youtube-description {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+.youtube-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background-color: #831016;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: fit-content;
+  border: none;
+  cursor: pointer;
+}
+
+.youtube-button:hover {
+  background-color: #6b0d12;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(131, 16, 22, 0.3);
+}
+
+.youtube-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.youtube-video-wrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-video-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.youtube-video {
+  display: block;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .youtube-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .youtube-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .youtube-section {
+    padding: 3rem 0;
+  }
+
+  .youtube-title {
+    font-size: 1.5rem;
+  }
+
+  .youtube-description {
+    font-size: 1rem;
+  }
+
+  .youtube-video-wrapper {
+    border-radius: 0.75rem;
+  }
+}
+
+/* Dark mode styles for YouTube section */
+.dark .youtube-section {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+.dark .youtube-title {
+  color: #f9fafb;
+}
+
+.dark .youtube-description {
+  color: #d1d5db;
+}
+
+/* Gallery Lightbox Navigation */
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(131, 16, 22, 0.8);
+  color: white;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.gallery-lightbox-prev {
+  left: 1rem;
+}
+
+.gallery-lightbox-next {
+  right: 1rem;
+}
+
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background-color: #831016;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-lightbox-prev svg,
+.gallery-lightbox-next svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .gallery-lightbox-prev svg,
+  .gallery-lightbox-next svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Hero - hide action buttons on small screens, keep dots visible */
+@media (max-width: 767px) {
+  .hero-buttons {
+    display: none !important;
+  }
+
+  /* Keep dot navigation same as desktop (absolute, centered, larger active) */
+  .hero-dots {
+    position: absolute;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 9999px;
+  }
+
+  .hero-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero-dot.active {
+    background-color: #831016;
+    width: 2rem;
+    border-radius: 9999px;
+  }
+
+  /* Ensure hero content visible above overlay on small screens */
+  .hero-content {
+    z-index: 25;
+    padding: 1.25rem 1rem;
   }
 }

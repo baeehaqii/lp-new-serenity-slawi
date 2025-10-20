@@ -10,6 +10,7 @@ export default function Gallery() {
   const [currentImage, setCurrentImage] = useState("")
   const [currentMediaType, setCurrentMediaType] = useState<"image" | "video">("image")
   const [zoomLevel, setZoomLevel] = useState(1)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   // Data gambar-gambar yang ada di gallery
   const galleryImages = [
@@ -33,19 +34,7 @@ export default function Gallery() {
       alt: "Modern luxury home pool",
       type: "image",
     },
-    {
-      src: "10zWEJ93C2Oc_KzKDKrg0-bXEkNjRZSDh",
-      alt: "Modern luxury home interior 1",
-      type: "video",
-      thumbnail:
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto/v1748012017/Screenshot_23-5-2025_214540_firefly.adobe.com_dabujd.jpg",
-    },
-    {
-      src: "1iXL8OsjvnX-sWxxdEmSqeNFygqfQIyL8",
-      alt: "Modern luxury home interior 1",
-      type: "video",
-      thumbnail: "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto/v1747845530/sumbang-1_ix19g2.jpg",
-    },
+
   ]
 
   // Function untuk membuka lightbox
@@ -57,12 +46,33 @@ export default function Gallery() {
     thumbnail?: string
   }
 
-  const openLightbox = (imageSrc: string, mediaType: "image" | "video"): void => {
+  const openLightbox = (imageSrc: string, mediaType: "image" | "video", index: number): void => {
     setCurrentImage(imageSrc)
     setCurrentMediaType(mediaType)
+    setCurrentIndex(index)
     setLightboxOpen(true)
     setZoomLevel(1)
     document.body.style.overflow = "hidden"
+  }
+
+  // Function untuk navigasi ke gambar sebelumnya
+  const previousImage = () => {
+    const newIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1
+    const image = galleryImages[newIndex]
+    setCurrentImage(image.src)
+    setCurrentMediaType(image.type as "image" | "video")
+    setCurrentIndex(newIndex)
+    setZoomLevel(1)
+  }
+
+  // Function untuk navigasi ke gambar berikutnya
+  const nextImage = () => {
+    const newIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1
+    const image = galleryImages[newIndex]
+    setCurrentImage(image.src)
+    setCurrentMediaType(image.type as "image" | "video")
+    setCurrentIndex(newIndex)
+    setZoomLevel(1)
   }
 
   // Function untuk menutup lightbox
@@ -90,7 +100,7 @@ export default function Gallery() {
         </p>
 
         <div className="gallery-grid">
-          <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[0].src, "image")}>
+          <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[0].src, "image", 0)}>
             <Image
               src={galleryImages[0].src || "/placeholder.svg"}
               alt={galleryImages[0].alt}
@@ -101,7 +111,7 @@ export default function Gallery() {
           </div>
 
           <div className="gallery-rows">
-            <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[1].src, "image")}>
+            <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[1].src, "image", 1)}>
               <Image
                 src={galleryImages[1].src || "/placeholder.svg"}
                 alt={galleryImages[1].alt}
@@ -112,7 +122,7 @@ export default function Gallery() {
             </div>
 
             <div className="gallery-columns">
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[2].src, "image")}>
+              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[2].src, "image", 2)}>
                 <Image
                   src={galleryImages[2].src || "/placeholder.svg"}
                   alt={galleryImages[2].alt}
@@ -122,7 +132,7 @@ export default function Gallery() {
                 />
               </div>
 
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[3].src, "image")}>
+              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[3].src, "image", 3)}>
                 <Image
                   src={galleryImages[3].src || "/placeholder.svg"}
                   alt={galleryImages[3].alt}
@@ -143,6 +153,19 @@ export default function Gallery() {
             <button className="gallery-lightbox-close" onClick={closeLightbox}>
               <XIcon size={24} />
             </button>
+
+            <button className="gallery-lightbox-prev" onClick={previousImage} title="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <button className="gallery-lightbox-next" onClick={nextImage} title="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
             {currentMediaType === "image" && (
               <div className="gallery-zoom-controls">
                 <button className="gallery-zoom-button" onClick={handleZoomIn} disabled={zoomLevel >= 3}>
@@ -155,13 +178,23 @@ export default function Gallery() {
             )}
             <div className="gallery-lightbox-content">
               {currentMediaType === "video" ? (
-                <iframe
-                  src={`https://drive.google.com/file/d/${currentImage}/preview`}
-                  width="100%"
-                  height="500px"
-                  allow="autoplay"
-                  allowFullScreen
-                ></iframe>
+                currentImage.includes("youtube.com") || currentImage.includes("youtu.be") ? (
+                  <iframe
+                    src={currentImage}
+                    width="100%"
+                    height="500px"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <iframe
+                    src={`https://drive.google.com/file/d/${currentImage}/preview`}
+                    width="100%"
+                    height="500px"
+                    allow="autoplay"
+                    allowFullScreen
+                  ></iframe>
+                )
               ) : (
                 <div className="gallery-lightbox-image-wrapper">
                   <Image
