@@ -27,7 +27,6 @@ export default function HomePage() {
       <Gallery />
       <YouTube />
       <Testimonials />
-      <SimulasiKPRTanpaBunga />
       <FAQ />
       <CallToAction />
       <Footer />

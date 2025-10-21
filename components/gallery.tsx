@@ -15,24 +15,26 @@ export default function Gallery() {
   // Data gambar-gambar yang ada di gallery
   const galleryImages = [
     {
-      src: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637086/TYPE_85_2_asjyzz.png",
+      src: "https://res.cloudinary.com/dqobwse9q/image/upload/q_20/v1754637086/TYPE_85_2_asjyzz.png",
       alt: "Modern luxury home exterior",
       type: "image",
     },
     {
-      src: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png",
+      src: "https://res.cloudinary.com/dqobwse9q/image/upload/q_20/v1754637084/TYPE_85_1_i718cl.png",
       alt: "Modern luxury home pool",
       type: "image",
     },
     {
-      src: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg",
-      alt: "Modern luxury home pool",
-      type: "image",
+      src: "https://www.instagram.com/reel/DN2khw-UrEC/",
+      alt: "Instagram Reel 1",
+      type: "video",
+      thumbnail: "https://res.cloudinary.com/dqobwse9q/image/upload/q_20/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg",
     },
     {
-      src: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg",
-      alt: "Modern luxury home pool",
-      type: "image",
+      src: "https://www.instagram.com/reel/DNAe6_NTxcG/",
+      alt: "Instagram Reel 2",
+      type: "video",
+      thumbnail: "https://res.cloudinary.com/dqobwse9q/image/upload/q_20/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg",
     },
 
   ]
@@ -122,24 +124,30 @@ export default function Gallery() {
             </div>
 
             <div className="gallery-columns">
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[2].src, "image", 2)}>
+              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[2].src, "video", 2)}>
                 <Image
-                  src={galleryImages[2].src || "/placeholder.svg"}
+                  src={galleryImages[2].thumbnail || "/placeholder.svg"}
                   alt={galleryImages[2].alt}
                   width={300}
                   height={300}
                   className="gallery-image"
                 />
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "48px", color: "white", textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
+                  ▶️
+                </div>
               </div>
 
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[3].src, "image", 3)}>
+              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[3].src, "video", 3)}>
                 <Image
-                  src={galleryImages[3].src || "/placeholder.svg"}
+                  src={galleryImages[3].thumbnail || "/placeholder.svg"}
                   alt={galleryImages[3].alt}
                   width={300}
                   height={300}
                   className="gallery-image"
                 />
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "48px", color: "white", textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
+                  ▶️
+                </div>
               </div>
             </div>
           </div>
@@ -154,28 +162,31 @@ export default function Gallery() {
               <XIcon size={24} />
             </button>
 
-            <button className="gallery-lightbox-prev" onClick={previousImage} title="Previous">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-
-            <button className="gallery-lightbox-next" onClick={nextImage} title="Next">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-
             {currentMediaType === "image" && (
-              <div className="gallery-zoom-controls">
-                <button className="gallery-zoom-button" onClick={handleZoomIn} disabled={zoomLevel >= 3}>
-                  <ZoomInIcon size={20} />
+              <>
+                <button className="gallery-lightbox-prev" onClick={previousImage} title="Previous">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
                 </button>
-                <button className="gallery-zoom-button" onClick={handleZoomOut} disabled={zoomLevel <= 1}>
-                  <ZoomOutIcon size={20} />
+
+                <button className="gallery-lightbox-next" onClick={nextImage} title="Next">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
                 </button>
-              </div>
+
+                <div className="gallery-zoom-controls">
+                  <button className="gallery-zoom-button" onClick={handleZoomIn} disabled={zoomLevel >= 3}>
+                    <ZoomInIcon size={20} />
+                  </button>
+                  <button className="gallery-zoom-button" onClick={handleZoomOut} disabled={zoomLevel <= 1}>
+                    <ZoomOutIcon size={20} />
+                  </button>
+                </div>
+              </>
             )}
+
             <div className="gallery-lightbox-content">
               {currentMediaType === "video" ? (
                 currentImage.includes("youtube.com") || currentImage.includes("youtu.be") ? (
@@ -186,6 +197,18 @@ export default function Gallery() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
+                ) : currentImage.includes("instagram.com") ? (
+                  <div style={{ width: "100%", maxWidth: "600px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <iframe
+                      src={`https://www.instagram.com/reel/${currentImage.split('/reel/')[1]?.split('/')[0]}/embed/captioned`}
+                      width="100%"
+                      height="800"
+                      frameBorder="0"
+                      scrolling="no"
+                      allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      style={{ maxWidth: "600px" }}
+                    ></iframe>
+                  </div>
                 ) : (
                   <iframe
                     src={`https://drive.google.com/file/d/${currentImage}/preview`}

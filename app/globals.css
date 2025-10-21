@@ -41,11 +41,11 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #111827;
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
+  --card: #111827;
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
+  --popover: #111827;
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
@@ -428,6 +428,11 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.dark .header {
+  background-color: #111827;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 .header-container {
   display: flex;
   align-items: center;
@@ -475,6 +480,14 @@ a {
   color: #831016;
 }
 
+.dark .header-nav-link {
+  color: #b0b0b0;
+}
+
+.dark .header-nav-link:hover {
+  color: #ff4d5c;
+}
+
 .theme-toggle-button {
   display: none;
   background: none;
@@ -487,6 +500,14 @@ a {
 
 .theme-toggle-button:hover {
   color: #831016;
+}
+
+.dark .theme-toggle-button {
+  color: #b0b0b0;
+}
+
+.dark .theme-toggle-button:hover {
+  color: #ff4d5c;
 }
 
 .header-button {
@@ -538,6 +559,11 @@ a {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
+.dark .header-mobile-nav {
+  background-color: #111827;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
 .header-mobile-menu {
   display: flex;
   flex-direction: column;
@@ -552,6 +578,14 @@ a {
 
 .header-mobile-link:hover {
   color: #1a2e5c;
+}
+
+.dark .header-mobile-link {
+  color: #b0b0b0;
+}
+
+.dark .header-mobile-link:hover {
+  color: #ff4d5c;
 }
 
 .header-mobile-button-link {
@@ -764,6 +798,7 @@ a {
 }
 
 .hero-container {
+  margin-top: 50px;
   position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
@@ -1207,6 +1242,7 @@ a {
 
 .about-main-card {
   background-color: #f9fafb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-radius: 1.5rem;
   overflow: hidden;
   display: flex;
@@ -2606,6 +2642,10 @@ a {
   overflow: hidden;
 }
 
+.dark .concepts-section {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
 .concepts-section::before {
   content: "";
   position: absolute;
@@ -2651,6 +2691,12 @@ a {
   background: #ffffff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .concept-card {
+  background: #1f1f1f;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 .concept-card:hover {

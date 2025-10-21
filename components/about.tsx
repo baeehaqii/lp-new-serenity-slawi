@@ -27,8 +27,8 @@ export default function About() {
             {/* Container gambar */}
             <div className="about-image-container">
               <Image
-                src="/images/design-mode/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg"
-                alt="Modern luxury home"
+                src="https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png"
+                alt="Sapphire Serenity Slawi"
                 fill
                 className="about-image"
               />
@@ -93,7 +93,7 @@ export default function About() {
               <h2 className="modal-title">Sapphire Serenity Slawi</h2>
               <div className="modal-image">
                 <Image
-                  src="/images/design-mode/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg"
+                  src="https://res.cloudinary.com/dqobwse9q/image/upload/q_20/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg"
                   alt="Sapphire Residence Sumbang"
                   width={700}
                   height={400}

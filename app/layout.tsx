@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   title: "Sapphire Serenity Slawi",
   description: "Temukan properti impian Anda bersama Sapphire Serenity Slawi",
   icons: {
-    icon: "/fav-ikon.png",
-    shortcut: "/fav-ikon.png",
-    apple: "/fav-ikon.png",
+    icon: "https://res.cloudinary.com/dx8w9qwl6/image/upload/v1761065068/Logo_pogacr.jpg",
+    shortcut: "https://res.cloudinary.com/dx8w9qwl6/image/upload/v1761065068/Logo_pogacr.jpg",
+    apple: "https://res.cloudinary.com/dx8w9qwl6/image/upload/v1761065068/Logo_pogacr.jpg",
   },
   keywords: [
     "Sapphire Serenity Slawi",
@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "Rumah Tegal",
     "Perumahan Tegal",
   ],
-    generator: 'v0.app'
 }
 
 export default function RootLayout({

@@ -17,18 +17,18 @@ export default function Hero() {
 
   const heroSlides = [
     {
-      image: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png",
+      image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png",
       title: "Clean, Calm, & Classy",
       description:
         "Perumahan eksklusif di Slawi yang menghadirkan kenyamanan, gaya hidup modern, dan lokasi strategis di pusat kota.",
     },
     {
-      image: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg",
+      image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg",
       title: "Hunian Modern & Nyaman",
       description: "Desain arsitektur minimalis modern dengan fasilitas lengkap untuk keluarga Indonesia.",
     },
     {
-      image: "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg",
+      image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.06_o6oiez.jpg",
       title: "Investasi Masa Depan",
       description: "Lokasi strategis dengan akses mudah ke berbagai fasilitas umum dan pusat kota Slawi.",
     },

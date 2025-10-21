@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Facebook, Linkedin, Twitter } from "lucide-react"
+import { ArrowRight, Facebook, Youtube, Instagram } from "lucide-react"
 
 export default function Footer() {
     return (
@@ -118,17 +118,17 @@ export default function Footer() {
                     </div>
 
                     <div className="footer-social">
-                        <Link href="#" className="footer-social-link">
+                        <Link href="https://www.instagram.com/sapphiregriyamodern/" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                            <Instagram className="footer-social-icon" />
+                            <span className="sr-only">Instagram</span>
+                        </Link>
+                        <Link href="https://www.facebook.com/profile.php?id=61577919040970" target="_blank" rel="noopener noreferrer" className="footer-social-link">
                             <Facebook className="footer-social-icon" />
                             <span className="sr-only">Facebook</span>
                         </Link>
-                        <Link href="#" className="footer-social-link">
-                            <Twitter className="footer-social-icon" />
-                            <span className="sr-only">Twitter</span>
-                        </Link>
-                        <Link href="#" className="footer-social-link">
-                            <Linkedin className="footer-social-icon" />
-                            <span className="sr-only">LinkedIn</span>
+                        <Link href="https://youtu.be/6mo2w9uDpQ4?si=qA7W_ZGbqPLMt8cp" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+                            <Youtube className="footer-social-icon" />
+                            <span className="sr-only">YouTube</span>
                         </Link>
                     </div>
                 </div>

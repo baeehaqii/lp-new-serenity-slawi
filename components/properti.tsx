@@ -22,30 +22,53 @@ function SimulasiKPRContent({
   onTahunChange,
   onBungaChange,
 }: {
-  harga: number
-  dp: number
-  tahun: number
-  bunga: number
-  onHargaChange: (value: number) => void
-  onDpChange: (value: number) => void
-  onTahunChange: (value: number) => void
-  onBungaChange: (value: number) => void
+  harga: string
+  dp: string
+  tahun: string
+  bunga: string
+  onHargaChange: (value: string) => void
+  onDpChange: (value: string) => void
+  onTahunChange: (value: string) => void
+  onBungaChange: (value: string) => void
 }) {
-  const jumlahPinjaman = useMemo(() => Math.max(0, harga - dp), [harga, dp])
+  const [focusedField, setFocusedField] = useState<string | null>(null)
+
+  function formatNumberWithDots(value: number): string {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
+  function formatInputValue(value: string): string {
+    // Remove all non-digits
+    const cleaned = value.replace(/\D/g, '')
+    // Add dots for thousands separator
+    return cleaned.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
+  function parseInputValue(value: string): string {
+    // Remove all dots to get raw number
+    return value.replace(/\./g, '')
+  }
+
+  const hargaNum = parseFloat(harga.replace(/\./g, '')) || 0
+  const dpNum = parseFloat(dp.replace(/\./g, '')) || 0
+  const tahunNum = parseFloat(tahun) || 0
+  const bungaNum = parseFloat(bunga) || 0
+
+  const jumlahPinjaman = useMemo(() => Math.max(0, hargaNum - dpNum), [hargaNum, dpNum])
 
   const cicilanPerBulan = useMemo(() => {
-    if (tahun <= 0) return 0
-    const bulan = tahun * 12
-    
-    if (bunga === 0) {
+    if (tahunNum <= 0) return 0
+    const bulan = tahunNum * 12
+
+    if (bungaNum === 0) {
       return jumlahPinjaman / bulan
     } else {
-      const bungaPerBulan = bunga / 100 / 12
+      const bungaPerBulan = bungaNum / 100 / 12
       const pembilang = jumlahPinjaman * bungaPerBulan * Math.pow(1 + bungaPerBulan, bulan)
       const penyebut = Math.pow(1 + bungaPerBulan, bulan) - 1
       return pembilang / penyebut
     }
-  }, [jumlahPinjaman, tahun, bunga])
+  }, [jumlahPinjaman, tahunNum, bungaNum])
 
   return (
     <div style={{
@@ -54,38 +77,68 @@ function SimulasiKPRContent({
       gap: '20px',
       paddingTop: '16px'
     }} className="kpr-grid-responsive">
+      {/* CSS for pointer styling */}
+      <style>{`
+        .kpr-editable-field {
+          cursor: text;
+          position: relative;
+        }
+        .kpr-editable-field::after {
+          content: '✎';
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 14px;
+          color: #999;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+        .kpr-editable-field:hover::after {
+          opacity: 1;
+        }
+      `}</style>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <div>
-          <label style={{ 
+          <label style={{
             display: 'block',
-            fontSize: '13px',
-            fontWeight: '700',
+            fontSize: '14px',
+            fontWeight: '600',
             color: '#1e293b',
-            marginBottom: '6px',
+            marginBottom: '8px',
             fontFamily: 'Poppins, sans-serif'
-          }}>
-            Harga Properti
-          </label>
-          <input
-            type="number"
-            value={harga}
-            onChange={(e) => onHargaChange(Number(e.target.value))}
-            style={{
-              width: '100%',
-              padding: '10px 12px',
-              border: '1px solid #e2e8f0',
-              borderRadius: '6px',
-              fontSize: '14px',
-              color: '#334155',
-              backgroundColor: '#ffffff',
-              fontFamily: 'Poppins, sans-serif',
-              outline: 'none'
-            }}
-          />
+          }}>Harga Properti</label>
+          <div className="kpr-editable-field" style={{ position: 'relative' }}>
+            <input
+              type="text"
+              value={harga}
+              onChange={(e) => {
+                const formatted = formatInputValue(e.target.value)
+                onHargaChange(formatted)
+              }}
+              onFocus={() => setFocusedField('harga')}
+              onBlur={() => setFocusedField(null)}
+              placeholder="masukan harga rumah"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                border: focusedField === 'harga' ? '2px solid #dc2626' : '1px solid #e2e8f0',
+                borderRadius: '6px',
+                fontSize: '14px',
+                color: '#334155',
+                backgroundColor: '#ffffff',
+                fontFamily: 'Poppins, sans-serif',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+                cursor: 'text'
+              }}
+            />
+          </div>
         </div>
 
         <div>
-          <label style={{ 
+          <label style={{
             display: 'block',
             fontSize: '13px',
             fontWeight: '700',
@@ -95,27 +148,37 @@ function SimulasiKPRContent({
           }}>
             Uang Muka (DP)
           </label>
-          <input
-            type="number"
-            value={dp}
-            onChange={(e) => onDpChange(Number(e.target.value))}
-            style={{
-              width: '100%',
-              padding: '10px 12px',
-              border: '1px solid #e2e8f0',
-              borderRadius: '6px',
-              fontSize: '14px',
-              color: '#334155',
-              backgroundColor: '#ffffff',
-              fontFamily: 'Poppins, sans-serif',
-              outline: 'none'
-            }}
-          />
+          <div className="kpr-editable-field" style={{ position: 'relative' }}>
+            <input
+              type="text"
+              value={dp}
+              onChange={(e) => {
+                const formatted = formatInputValue(e.target.value)
+                onDpChange(formatted)
+              }}
+              onFocus={() => setFocusedField('dp')}
+              onBlur={() => setFocusedField(null)}
+              placeholder="masukan uang muka yang anda miliki"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                border: focusedField === 'dp' ? '2px solid #dc2626' : '1px solid #e2e8f0',
+                borderRadius: '6px',
+                fontSize: '14px',
+                color: '#334155',
+                backgroundColor: '#ffffff',
+                fontFamily: 'Poppins, sans-serif',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+                cursor: 'text'
+              }}
+            />
+          </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
-            <label style={{ 
+            <label style={{
               display: 'block',
               fontSize: '13px',
               fontWeight: '700',
@@ -125,26 +188,33 @@ function SimulasiKPRContent({
             }}>
               Jangka Waktu (Tahun)
             </label>
-            <input
-              type="number"
-              value={tahun}
-              onChange={(e) => onTahunChange(Math.max(1, Number(e.target.value)))}
-              min="1"
-              style={{
-                width: '100%',
-                padding: '10px 12px',
-                border: '1px solid #e2e8f0',
-                borderRadius: '6px',
-                fontSize: '14px',
-                color: '#334155',
-                backgroundColor: '#ffffff',
-                fontFamily: 'Poppins, sans-serif',
-                outline: 'none'
-              }}
-            />
+            <div className="kpr-editable-field" style={{ position: 'relative' }}>
+              <input
+                type="number"
+                value={tahun}
+                onChange={(e) => onTahunChange(e.target.value)}
+                onFocus={() => setFocusedField('tahun')}
+                onBlur={() => setFocusedField(null)}
+                placeholder="masukan jangka waktu dalam tahun"
+                min="1"
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  border: focusedField === 'tahun' ? '2px solid #dc2626' : '1px solid #e2e8f0',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  color: '#334155',
+                  backgroundColor: '#ffffff',
+                  fontFamily: 'Poppins, sans-serif',
+                  outline: 'none',
+                  transition: 'all 0.2s ease',
+                  cursor: focusedField === 'tahun' ? 'text' : 'default'
+                }}
+              />
+            </div>
           </div>
           <div>
-            <label style={{ 
+            <label style={{
               display: 'block',
               fontSize: '13px',
               fontWeight: '700',
@@ -154,24 +224,31 @@ function SimulasiKPRContent({
             }}>
               Suku Bunga (%)
             </label>
-            <input
-              type="number"
-              value={bunga}
-              onChange={(e) => onBungaChange(Math.max(0, Number(e.target.value)))}
-              min="0"
-              step="0.1"
-              style={{
-                width: '100%',
-                padding: '10px 12px',
-                border: '1px solid #e2e8f0',
-                borderRadius: '6px',
-                fontSize: '14px',
-                color: '#334155',
-                backgroundColor: '#ffffff',
-                fontFamily: 'Poppins, sans-serif',
-                outline: 'none'
-              }}
-            />
+            <div className="kpr-editable-field" style={{ position: 'relative' }}>
+              <input
+                type="number"
+                value={bunga}
+                onChange={(e) => onBungaChange(e.target.value)}
+                onFocus={() => setFocusedField('bunga')}
+                onBlur={() => setFocusedField(null)}
+                placeholder="masukan suku bunga, contoh 5,5%"
+                min="0"
+                step="0.1"
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  border: focusedField === 'bunga' ? '2px solid #dc2626' : '1px solid #e2e8f0',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  color: '#334155',
+                  backgroundColor: '#ffffff',
+                  fontFamily: 'Poppins, sans-serif',
+                  outline: 'none',
+                  transition: 'all 0.2s ease',
+                  cursor: focusedField === 'bunga' ? 'text' : 'default'
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -184,7 +261,7 @@ function SimulasiKPRContent({
           padding: '20px 24px',
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
         }}>
-          <p style={{ 
+          <p style={{
             fontSize: '12px',
             fontWeight: '600',
             fontFamily: 'Poppins, sans-serif',
@@ -193,14 +270,14 @@ function SimulasiKPRContent({
           }}>
             Cicilan Per Bulan
           </p>
-          <p style={{ 
+          <p style={{
             fontSize: '28px',
             fontWeight: '800',
             fontFamily: 'Poppins, sans-serif',
             margin: '8px 0 0 0',
             lineHeight: 1
           }}>
-            {formatIDR(Math.round(cicilanPerBulan))}
+            {hargaNum > 0 ? `Rp ${Math.round(cicilanPerBulan).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}` : '-'}
           </p>
         </div>
 
@@ -211,7 +288,7 @@ function SimulasiKPRContent({
           padding: '16px',
           boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
         }}>
-          <p style={{ 
+          <p style={{
             fontSize: '12px',
             color: '#64748b',
             fontWeight: '500',
@@ -220,14 +297,14 @@ function SimulasiKPRContent({
           }}>
             Jumlah Pinjaman
           </p>
-          <p style={{ 
+          <p style={{
             fontSize: '18px',
             fontWeight: '700',
             color: '#0f172a',
             margin: '6px 0 0 0',
             fontFamily: 'Poppins, sans-serif'
           }}>
-            {formatIDR(Math.round(jumlahPinjaman))}
+            {hargaNum > 0 ? `Rp ${Math.round(jumlahPinjaman).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}` : '-'}
           </p>
         </div>
       </div>
@@ -248,10 +325,10 @@ export default function Properties() {
   const [isDragging, setIsDragging] = useState<{ [key: number]: boolean }>({})
   const [dragStart, setDragStart] = useState<{ [key: number]: number }>({})
   const [modalTab, setModalTab] = useState<'detail' | 'simulasi'>('detail')
-  const [kprHarga, setKprHarga] = useState<number>(500000000)
-  const [kprDp, setKprDp] = useState<number>(100000000)
-  const [kprTahun, setKprTahun] = useState<number>(15)
-  const [kprBunga, setKprBunga] = useState<number>(0)
+  const [kprHarga, setKprHarga] = useState<string>('')
+  const [kprDp, setKprDp] = useState<string>('')
+  const [kprTahun, setKprTahun] = useState<string>('')
+  const [kprBunga, setKprBunga] = useState<string>('')
 
   const propertyTypes: PropertyType[] = [
     { id: "tipe-rumah", label: "Tipe Rumah", active: true },
@@ -264,8 +341,8 @@ export default function Properties() {
     {
       id: 1,
       images: [
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png",
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637086/TYPE_85_2_asjyzz.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637086/TYPE_85_2_asjyzz.png",
       ],
       floorPlan: "/denah-type-75.png",
       name: "Tipe 75",
@@ -280,8 +357,8 @@ export default function Properties() {
     {
       id: 2,
       images: [
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637086/TYPE_85_2_asjyzz.png",
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637086/TYPE_85_2_asjyzz.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10 /v1754637084/TYPE_85_1_i718cl.png",
       ],
       floorPlan: "/denah-type-85.png",
       name: "Tipe 85",
@@ -296,8 +373,8 @@ export default function Properties() {
     {
       id: 3,
       images: [
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637083/TYPE_90_1_bjkfpc.png",
-        "https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637083/TYPE_90_1_bjkfpc.png",
+        "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png",
       ],
       floorPlan: "/denah-type-90.png",
       name: "Tipe 90",
@@ -313,7 +390,7 @@ export default function Properties() {
 
   const siteplan = {
     id: "siteplan-1",
-    image: "https://res.cloudinary.com/dqobwse9q/image/upload/v1755444815/siteplane_serenity_slawi_kvzyhe.png",
+    image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1755444815/siteplane_serenity_slawi_kvzyhe.png",
     name: "Siteplan Sapphire Serenity Slawi",
     description:
       "Masterplan perumahan Sapphire Serenity Slawi yang menampilkan layout, jalan, ruang terbuka hijau, dan fasilitas umum.",
@@ -336,7 +413,7 @@ export default function Properties() {
   }
 
   const location = {
-    image: "/denah-lokasi.png",
+    embed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.152090540976!2d109.1275648!3d-6.991360799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fbf007c3b46cb%3A0x5da496f205d213b2!2sSapphire%20Serenity%20Slawi!5e0!3m2!1sen!2sid!4v1761065829691!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>',
     name: "Denah Lokasi Sapphire Serenity Slawi",
     description: "Lokasi strategis di pusat kota Slawi dengan akses mudah ke berbagai fasilitas umum.",
   }
@@ -446,12 +523,7 @@ export default function Properties() {
     setSelectedProperty(property)
     setIsModalOpen(true)
     setModalTab('detail')
-    // Initialize KPR simulator with property price (example estimate)
-    const estimatedPrice = 500000000
-    setKprHarga(estimatedPrice)
-    setKprDp(Math.floor(estimatedPrice * 0.2)) // 20% DP default
-    setKprTahun(15)
-    setKprBunga(0)
+    // Keep KPR simulator empty for user input
   }
 
   const closeModal = () => {
@@ -655,7 +727,7 @@ export default function Properties() {
           <div className="specifications-container">
             <div className="specifications-image">
               <Image
-                src="https://res.cloudinary.com/dqobwse9q/image/upload/v1754637084/TYPE_85_1_i718cl.png"
+                src="https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png"
                 alt="Spesifikasi Rumah"
                 width={600}
                 height={800}
@@ -723,12 +795,15 @@ export default function Properties() {
         ) : activeType === "lokasi" ? (
           <div className="location-container">
             <div className="location-image-wrapper" onClick={openLocationModal}>
-              <Image
-                src={location.image || "/placeholder.svg"}
-                alt={location.name}
-                width={1200}
-                height={800}
-                className="location-image"
+              <div
+                dangerouslySetInnerHTML={{ __html: location.embed }}
+                style={{
+                  width: '100%',
+                  height: '450px',
+                  cursor: 'pointer',
+                  borderRadius: '8px',
+                  overflow: 'hidden'
+                }}
               />
             </div>
             <div className="location-content">
@@ -736,7 +811,7 @@ export default function Properties() {
               <p>{location.description}</p>
               <div className="location-button-container">
                 <Link
-                  href="https://share.google/UHMHGgKCuNaIomzcI"
+                  href="https://maps.app.goo.gl/yWFRgAr5ZDvcyGFW6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="location-gmaps-button"
@@ -922,23 +997,14 @@ export default function Properties() {
             <button className="concept-modal-close" onClick={closeLocationModal}>
               <XIcon size={24} />
             </button>
-            <div className="gallery-zoom-controls">
-              <button className="gallery-zoom-button" onClick={handleLocationZoomIn} disabled={locationZoom >= 3}>
-                <ZoomInIcon size={20} />
-              </button>
-              <button className="gallery-zoom-button" onClick={handleLocationZoomOut} disabled={locationZoom <= 1}>
-                <ZoomOutIcon size={20} />
-              </button>
-            </div>
             <div className="concept-modal-content">
-              <div className="gallery-lightbox-image-wrapper">
-                <Image
-                  src={location.image || "/placeholder.svg"}
-                  alt={location.name}
-                  width={1800}
-                  height={1200}
-                  className="concept-modal-image"
-                  style={{ transform: `scale(${locationZoom})` }}
+              <div className="gallery-lightbox-image-wrapper" style={{ height: '600px' }}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: location.embed }}
+                  style={{
+                    width: '100%',
+                    height: '100%'
+                  }}
                 />
               </div>
             </div>
