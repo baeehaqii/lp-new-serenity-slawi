@@ -496,7 +496,7 @@ export default function Properties() {
               <p>{location.description}</p>
               <div className="location-button-container">
                 <Link
-                  href="https://share.google.com/uaDWGKyhm06qnypUx"
+                  href="https://share.google/UHMHGgKCuNaIomzcI"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="location-gmaps-button"
