@@ -50,11 +50,27 @@ export default function RootLayout({
         <link rel="preconnect" href="https://analytics.tiktok.com" />
         <link rel="preconnect" href="https://www.youtube.com" />
 
+        {/* Preload critical fonts - reduce render blocking */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          />
+        </noscript>
+
         {/* DNS Prefetch for additional external domains */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-17369558016" strategy="lazyOnload" />
         <Script id="google-analytics" strategy="lazyOnload">
           {`

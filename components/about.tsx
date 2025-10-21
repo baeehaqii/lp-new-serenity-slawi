@@ -27,9 +27,10 @@ export default function About() {
             {/* Container gambar */}
             <div className="about-image-container">
               <Image
-                src="https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071337/type_90_qpwdco.avif"
+                src="https://res.cloudinary.com/dx8w9qwl6/image/upload/w_600,h_400,c_fill,f_auto,q_auto:eco/v1761071337/type_90_qpwdco.avif"
                 alt="Sapphire Serenity Slawi"
-                fill
+                width={600}
+                height={400}
                 className="about-image"
               />
             </div>
@@ -93,7 +94,7 @@ export default function About() {
               <h2 className="modal-title">Sapphire Serenity Slawi</h2>
               <div className="modal-image">
                 <Image
-                  src="https://res.cloudinary.com/dqobwse9q/image/upload/q_auto:good/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg"
+                  src="https://res.cloudinary.com/dqobwse9q/image/upload/w_700,h_400,c_fill,f_auto,q_auto:eco/v1754637078/WhatsApp_Image_2025-06-19_at_11.00.07_bvpgud.jpg"
                   alt="Sapphire Residence Sumbang"
                   width={700}
                   height={400}

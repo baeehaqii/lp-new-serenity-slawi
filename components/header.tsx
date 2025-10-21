@@ -15,7 +15,7 @@ export default function Header() {
       <div className="container header-container">
         <Link href="/" className="header-logo">
           <Image
-            src="https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1757392355/sgm_v79mjj.png"
+            src="https://res.cloudinary.com/dx8w9qwl6/image/upload/w_150,h_150,c_fit,f_auto,q_auto:eco/v1757392355/sgm_v79mjj.png"
             alt="Sapphire Madani Logo"
             width={150}
             height={40}
@@ -37,7 +37,7 @@ export default function Header() {
           <Link href="#fasilitas" className="header-nav-link">
             Fasilitas
           </Link>
-          
+
           <Link href="#cta" className="header-nav-link">
             Promo
           </Link>
@@ -51,13 +51,13 @@ export default function Header() {
         </Link> */}
 
         {/* Theme Toggle Button */}
-          <button 
-            onClick={toggleTheme} 
-            className="theme-toggle-button"
-            aria-label="Toggle Dark Mode"
-          >
-            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
+        <button
+          onClick={toggleTheme}
+          className="theme-toggle-button"
+          aria-label="Toggle Dark Mode"
+        >
+          {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+        </button>
 
         {/* Mobile Menu Button */}
         <button className="header-mobile-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -97,7 +97,7 @@ export default function Header() {
             >
               Fasilitas
             </Link>
-            
+
             <Link href="#cta" className="header-nav-link">
               Promo
             </Link>
