@@ -4,9 +4,236 @@ import type React from "react"
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { BedDoubleIcon, BathIcon, LandPlotIcon, BadgeCheckIcon, XIcon, ZoomInIcon, ZoomOutIcon } from "./icons"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+
+function formatIDR(value: number) {
+  return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 })
+}
+
+function SimulasiKPRContent({
+  harga,
+  dp,
+  tahun,
+  bunga,
+  onHargaChange,
+  onDpChange,
+  onTahunChange,
+  onBungaChange,
+}: {
+  harga: number
+  dp: number
+  tahun: number
+  bunga: number
+  onHargaChange: (value: number) => void
+  onDpChange: (value: number) => void
+  onTahunChange: (value: number) => void
+  onBungaChange: (value: number) => void
+}) {
+  const jumlahPinjaman = useMemo(() => Math.max(0, harga - dp), [harga, dp])
+
+  const cicilanPerBulan = useMemo(() => {
+    if (tahun <= 0) return 0
+    const bulan = tahun * 12
+    
+    if (bunga === 0) {
+      return jumlahPinjaman / bulan
+    } else {
+      const bungaPerBulan = bunga / 100 / 12
+      const pembilang = jumlahPinjaman * bungaPerBulan * Math.pow(1 + bungaPerBulan, bulan)
+      const penyebut = Math.pow(1 + bungaPerBulan, bulan) - 1
+      return pembilang / penyebut
+    }
+  }, [jumlahPinjaman, tahun, bunga])
+
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      gap: '20px',
+      paddingTop: '16px'
+    }} className="kpr-grid-responsive">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div>
+          <label style={{ 
+            display: 'block',
+            fontSize: '13px',
+            fontWeight: '700',
+            color: '#1e293b',
+            marginBottom: '6px',
+            fontFamily: 'Poppins, sans-serif'
+          }}>
+            Harga Properti
+          </label>
+          <input
+            type="number"
+            value={harga}
+            onChange={(e) => onHargaChange(Number(e.target.value))}
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              border: '1px solid #e2e8f0',
+              borderRadius: '6px',
+              fontSize: '14px',
+              color: '#334155',
+              backgroundColor: '#ffffff',
+              fontFamily: 'Poppins, sans-serif',
+              outline: 'none'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ 
+            display: 'block',
+            fontSize: '13px',
+            fontWeight: '700',
+            color: '#1e293b',
+            marginBottom: '6px',
+            fontFamily: 'Poppins, sans-serif'
+          }}>
+            Uang Muka (DP)
+          </label>
+          <input
+            type="number"
+            value={dp}
+            onChange={(e) => onDpChange(Number(e.target.value))}
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              border: '1px solid #e2e8f0',
+              borderRadius: '6px',
+              fontSize: '14px',
+              color: '#334155',
+              backgroundColor: '#ffffff',
+              fontFamily: 'Poppins, sans-serif',
+              outline: 'none'
+            }}
+          />
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <div>
+            <label style={{ 
+              display: 'block',
+              fontSize: '13px',
+              fontWeight: '700',
+              color: '#1e293b',
+              marginBottom: '6px',
+              fontFamily: 'Poppins, sans-serif'
+            }}>
+              Jangka Waktu (Tahun)
+            </label>
+            <input
+              type="number"
+              value={tahun}
+              onChange={(e) => onTahunChange(Math.max(1, Number(e.target.value)))}
+              min="1"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                border: '1px solid #e2e8f0',
+                borderRadius: '6px',
+                fontSize: '14px',
+                color: '#334155',
+                backgroundColor: '#ffffff',
+                fontFamily: 'Poppins, sans-serif',
+                outline: 'none'
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ 
+              display: 'block',
+              fontSize: '13px',
+              fontWeight: '700',
+              color: '#1e293b',
+              marginBottom: '6px',
+              fontFamily: 'Poppins, sans-serif'
+            }}>
+              Suku Bunga (%)
+            </label>
+            <input
+              type="number"
+              value={bunga}
+              onChange={(e) => onBungaChange(Math.max(0, Number(e.target.value)))}
+              min="0"
+              step="0.1"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                border: '1px solid #e2e8f0',
+                borderRadius: '6px',
+                fontSize: '14px',
+                color: '#334155',
+                backgroundColor: '#ffffff',
+                fontFamily: 'Poppins, sans-serif',
+                outline: 'none'
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{
+          backgroundColor: '#831016',
+          color: '#ffffff',
+          borderRadius: '16px',
+          padding: '20px 24px',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+        }}>
+          <p style={{ 
+            fontSize: '12px',
+            fontWeight: '600',
+            fontFamily: 'Poppins, sans-serif',
+            margin: 0,
+            marginBottom: '6px'
+          }}>
+            Cicilan Per Bulan
+          </p>
+          <p style={{ 
+            fontSize: '28px',
+            fontWeight: '800',
+            fontFamily: 'Poppins, sans-serif',
+            margin: '8px 0 0 0',
+            lineHeight: 1
+          }}>
+            {formatIDR(Math.round(cicilanPerBulan))}
+          </p>
+        </div>
+
+        <div style={{
+          backgroundColor: '#ffffff',
+          border: '1px solid #e2e8f0',
+          borderRadius: '8px',
+          padding: '16px',
+          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+        }}>
+          <p style={{ 
+            fontSize: '12px',
+            color: '#64748b',
+            fontWeight: '500',
+            margin: 0,
+            fontFamily: 'Poppins, sans-serif'
+          }}>
+            Jumlah Pinjaman
+          </p>
+          <p style={{ 
+            fontSize: '18px',
+            fontWeight: '700',
+            color: '#0f172a',
+            margin: '6px 0 0 0',
+            fontFamily: 'Poppins, sans-serif'
+          }}>
+            {formatIDR(Math.round(jumlahPinjaman))}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function Properties() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -20,6 +247,11 @@ export default function Properties() {
   const [touchStart, setTouchStart] = useState<{ [key: number]: number }>({})
   const [isDragging, setIsDragging] = useState<{ [key: number]: boolean }>({})
   const [dragStart, setDragStart] = useState<{ [key: number]: number }>({})
+  const [modalTab, setModalTab] = useState<'detail' | 'simulasi'>('detail')
+  const [kprHarga, setKprHarga] = useState<number>(500000000)
+  const [kprDp, setKprDp] = useState<number>(100000000)
+  const [kprTahun, setKprTahun] = useState<number>(15)
+  const [kprBunga, setKprBunga] = useState<number>(0)
 
   const propertyTypes: PropertyType[] = [
     { id: "tipe-rumah", label: "Tipe Rumah", active: true },
@@ -213,10 +445,18 @@ export default function Properties() {
   const openModal = (property: Property): void => {
     setSelectedProperty(property)
     setIsModalOpen(true)
+    setModalTab('detail')
+    // Initialize KPR simulator with property price (example estimate)
+    const estimatedPrice = 500000000
+    setKprHarga(estimatedPrice)
+    setKprDp(Math.floor(estimatedPrice * 0.2)) // 20% DP default
+    setKprTahun(15)
+    setKprBunga(0)
   }
 
   const closeModal = () => {
     setIsModalOpen(false)
+    setModalTab('detail')
     setTimeout(() => {
       setSelectedProperty(null)
     }, 300)
@@ -518,64 +758,129 @@ export default function Properties() {
             <button className="modal-close" onClick={closeModal}>
               <XIcon />
             </button>
+
+            {/* Modal Tabs */}
+            <div style={{
+              display: 'flex',
+              borderBottom: '1px solid #e2e8f0',
+              paddingBottom: 0,
+              marginBottom: 0,
+              gap: '32px',
+              paddingLeft: '32px',
+              paddingRight: '32px',
+              paddingTop: '24px'
+            }}>
+              <button
+                onClick={() => setModalTab('detail')}
+                style={{
+                  padding: '12px 0',
+                  border: 'none',
+                  backgroundColor: 'transparent',
+                  fontSize: '14px',
+                  fontWeight: modalTab === 'detail' ? '700' : '500',
+                  color: modalTab === 'detail' ? '#831016' : '#94a3b8',
+                  cursor: 'pointer',
+                  borderBottom: modalTab === 'detail' ? '2px solid #831016' : 'none',
+                  transition: 'all 0.2s',
+                  fontFamily: 'Poppins, sans-serif',
+                  marginBottom: '-1px'
+                }}
+              >
+                Detail Properti
+              </button>
+              <button
+                onClick={() => setModalTab('simulasi')}
+                style={{
+                  padding: '12px 0',
+                  border: 'none',
+                  backgroundColor: 'transparent',
+                  fontSize: '14px',
+                  fontWeight: modalTab === 'simulasi' ? '700' : '500',
+                  color: modalTab === 'simulasi' ? '#831016' : '#94a3b8',
+                  cursor: 'pointer',
+                  borderBottom: modalTab === 'simulasi' ? '2px solid #831016' : 'none',
+                  transition: 'all 0.2s',
+                  fontFamily: 'Poppins, sans-serif',
+                  marginBottom: '-1px'
+                }}
+              >
+                Simulasi KPR
+              </button>
+            </div>
+
             <div className="modal-content">
-              <h2 className="modal-title">{selectedProperty.name}</h2>
-              <div className="modal-image">
-                <Image
-                  src={selectedProperty.floorPlan || "/placeholder.svg"}
-                  alt={`Denah ${selectedProperty.name}`}
-                  width={1200}
-                  height={800}
-                  style={{ objectFit: "contain", width: "100%", height: "auto" }}
+              {modalTab === 'detail' ? (
+                <>
+                  <h2 className="modal-title">{selectedProperty.name}</h2>
+                  <div className="modal-image">
+                    <Image
+                      src={selectedProperty.floorPlan || "/placeholder.svg"}
+                      alt={`Denah ${selectedProperty.name}`}
+                      width={1200}
+                      height={800}
+                      style={{ objectFit: "contain", width: "100%", height: "auto" }}
+                    />
+                  </div>
+                  <div className="modal-description">
+                    <p>{selectedProperty.description}</p>
+
+                    <h3 className="modal-subtitle">Spesifikasi</h3>
+                    <div className="modal-property-features">
+                      <div className="modal-property-feature">
+                        <BedDoubleIcon className="modal-feature-icon" />
+                        <div>
+                          <div className="modal-feature-label">Kamar Tidur</div>
+                          <div className="modal-feature-value">{selectedProperty.bedrooms}</div>
+                        </div>
+                      </div>
+                      <div className="modal-property-feature">
+                        <BathIcon className="modal-feature-icon" />
+                        <div>
+                          <div className="modal-feature-label">Kamar Mandi</div>
+                          <div className="modal-feature-value">{selectedProperty.bathrooms}</div>
+                        </div>
+                      </div>
+                      <div className="modal-property-feature">
+                        <LandPlotIcon className="modal-feature-icon" />
+                        <div>
+                          <div className="modal-feature-label">Luas Tanah</div>
+                          <div className="modal-feature-value">{selectedProperty.area} m²</div>
+                        </div>
+                      </div>
+                      <div className="modal-property-feature">
+                        <BadgeCheckIcon className="modal-feature-icon" />
+                        <div>
+                          <div className="modal-feature-label">Sertifikat</div>
+                          <div className="modal-feature-value">{selectedProperty.certificate}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3 className="modal-subtitle">Harga</h3>
+                    <div className="modal-price">Rp {selectedProperty.price}</div>
+
+                    <div className="modal-cta">
+                      <Link
+                        href="https://wa.me/62811261740?text=Halo,%20saya%20tertarik%20dengan%20properti%20Sapphire%20Serenity%20Slawi"
+                        className="modal-cta-button"
+                      >
+                        Hubungi Kami
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <SimulasiKPRContent
+                  harga={kprHarga}
+                  dp={kprDp}
+                  tahun={kprTahun}
+                  bunga={kprBunga}
+                  onHargaChange={setKprHarga}
+                  onDpChange={setKprDp}
+                  onTahunChange={setKprTahun}
+                  onBungaChange={setKprBunga}
                 />
-              </div>
-              <div className="modal-description">
-                <p>{selectedProperty.description}</p>
-
-                <h3 className="modal-subtitle">Spesifikasi</h3>
-                <div className="modal-property-features">
-                  <div className="modal-property-feature">
-                    <BedDoubleIcon className="modal-feature-icon" />
-                    <div>
-                      <div className="modal-feature-label">Kamar Tidur</div>
-                      <div className="modal-feature-value">{selectedProperty.bedrooms}</div>
-                    </div>
-                  </div>
-                  <div className="modal-property-feature">
-                    <BathIcon className="modal-feature-icon" />
-                    <div>
-                      <div className="modal-feature-label">Kamar Mandi</div>
-                      <div className="modal-feature-value">{selectedProperty.bathrooms}</div>
-                    </div>
-                  </div>
-                  <div className="modal-property-feature">
-                    <LandPlotIcon className="modal-feature-icon" />
-                    <div>
-                      <div className="modal-feature-label">Luas Tanah</div>
-                      <div className="modal-feature-value">{selectedProperty.area} m²</div>
-                    </div>
-                  </div>
-                  <div className="modal-property-feature">
-                    <BadgeCheckIcon className="modal-feature-icon" />
-                    <div>
-                      <div className="modal-feature-label">Sertifikat</div>
-                      <div className="modal-feature-value">{selectedProperty.certificate}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <h3 className="modal-subtitle">Harga</h3>
-                <div className="modal-price">Rp {selectedProperty.price}</div>
-
-                <div className="modal-cta">
-                  <Link
-                    href="https://wa.me/62811261740?text=Halo,%20saya%20tertarik%20dengan%20properti%20Sapphire%20Serenity%20Slawi"
-                    className="modal-cta-button"
-                  >
-                    Hubungi Kami
-                  </Link>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
