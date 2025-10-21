@@ -102,7 +102,12 @@ export default function Gallery() {
         </p>
 
         <div className="gallery-grid">
-          <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[0].src, "image", 0)}>
+          {/* Image 1 - Regular Image (No Play Button) */}
+          <div
+            className="gallery-grid-item"
+            onClick={() => openLightbox(galleryImages[0].src, galleryImages[0].type as "image" | "video", 0)}
+            style={{ position: "relative" }}
+          >
             <Image
               src={galleryImages[0].src || "/placeholder.svg"}
               alt={galleryImages[0].alt}
@@ -113,7 +118,12 @@ export default function Gallery() {
           </div>
 
           <div className="gallery-rows">
-            <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[1].src, "image", 1)}>
+            {/* Image 2 - Regular Image (No Play Button) */}
+            <div
+              className="gallery-grid-item"
+              onClick={() => openLightbox(galleryImages[1].src, galleryImages[1].type as "image" | "video", 1)}
+              style={{ position: "relative" }}
+            >
               <Image
                 src={galleryImages[1].src || "/placeholder.svg"}
                 alt={galleryImages[1].alt}
@@ -124,7 +134,12 @@ export default function Gallery() {
             </div>
 
             <div className="gallery-columns">
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[2].src, "video", 2)}>
+              {/* Video 1 - Instagram Reel (WITH Play Button) */}
+              <div
+                className="gallery-grid-item"
+                onClick={() => openLightbox(galleryImages[2].src, galleryImages[2].type as "image" | "video", 2)}
+                style={{ position: "relative" }}
+              >
                 <Image
                   src={galleryImages[2].thumbnail || "/placeholder.svg"}
                   alt={galleryImages[2].alt}
@@ -132,12 +147,28 @@ export default function Gallery() {
                   height={300}
                   className="gallery-image"
                 />
-                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "48px", color: "white", textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
-                  ▶️
-                </div>
+                {galleryImages[2].type === "video" && (
+                  <div style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    fontSize: "48px",
+                    color: "white",
+                    textShadow: "0 2px 8px rgba(0,0,0,0.5)",
+                    pointerEvents: "none"
+                  }}>
+                    ▶️
+                  </div>
+                )}
               </div>
 
-              <div className="gallery-grid-item" onClick={() => openLightbox(galleryImages[3].src, "video", 3)}>
+              {/* Video 2 - Instagram Reel (WITH Play Button) */}
+              <div
+                className="gallery-grid-item"
+                onClick={() => openLightbox(galleryImages[3].src, galleryImages[3].type as "image" | "video", 3)}
+                style={{ position: "relative" }}
+              >
                 <Image
                   src={galleryImages[3].thumbnail || "/placeholder.svg"}
                   alt={galleryImages[3].alt}
@@ -145,9 +176,20 @@ export default function Gallery() {
                   height={300}
                   className="gallery-image"
                 />
-                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "48px", color: "white", textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
-                  ▶️
-                </div>
+                {galleryImages[3].type === "video" && (
+                  <div style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    fontSize: "48px",
+                    color: "white",
+                    textShadow: "0 2px 8px rgba(0,0,0,0.5)",
+                    pointerEvents: "none"
+                  }}>
+                    ▶️
+                  </div>
+                )}
               </div>
             </div>
           </div>
