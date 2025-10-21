@@ -12,6 +12,7 @@ import CallToAction from "@/components/cta"
 import Accessibility from "@/components/accessibility"
 import Concepts from "@/components/concepts"
 import WhatsAppFloat from "@/components/whatsapp-float"
+import SimulasiKPRTanpaBunga from "@/components/simulasi-kpr-tanpa-bunga"
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Gallery />
       <YouTube />
       <Testimonials />
+      <SimulasiKPRTanpaBunga />
       <FAQ />
       <CallToAction />
       <Footer />

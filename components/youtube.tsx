@@ -15,7 +15,7 @@ export default function YouTube() {
                             tour virtual, tips properti, dan konten menarik lainnya.
                         </p>
                         <Link
-                            href="https://www.youtube.com/@sapphiregroup"
+                            href="https://youtu.be/6mo2w9uDpQ4?si=qA7W_ZGbqPLMt8cp"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="youtube-button"
@@ -32,7 +32,7 @@ export default function YouTube() {
                         <iframe
                             width="100%"
                             height="400"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            src="https://www.youtube.com/embed/6mo2w9uDpQ4?si=-zu4-JrJj6PP-oeu"
                             title="Sapphire Serenity Slawi"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
