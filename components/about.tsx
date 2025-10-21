@@ -27,7 +27,7 @@ export default function About() {
             {/* Container gambar */}
             <div className="about-image-container">
               <Image
-                src="https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png"
+                src="https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071337/type_90_qpwdco.avif"
                 alt="Sapphire Serenity Slawi"
                 fill
                 className="about-image"
