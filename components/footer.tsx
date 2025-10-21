@@ -105,7 +105,7 @@ export default function Footer() {
                 <div className="footer-bottom">
                     <div className="footer-logo">
                         <Image
-                            src="https://res.cloudinary.com/dx8w9qwl6/image/upload/q_20/v1757392355/sgm_v79mjj.png"
+                            src="https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1757392355/sgm_v79mjj.png"
                             alt="Sapphire Serenity Slawi Logo"
                             width={150}
                             height={40}

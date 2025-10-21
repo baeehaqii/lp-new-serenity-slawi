@@ -341,8 +341,8 @@ export default function Properties() {
     {
       id: 1,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-75.png",
       name: "Tipe 75",
@@ -357,8 +357,8 @@ export default function Properties() {
     {
       id: 2,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-85.png",
       name: "Tipe 85",
@@ -373,8 +373,8 @@ export default function Properties() {
     {
       id: 3,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_10/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/q_auto:good/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-90.png",
       name: "Tipe 90",
@@ -390,7 +390,7 @@ export default function Properties() {
 
   const siteplan = {
     id: "siteplan-1",
-    image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1755444815/siteplane_serenity_slawi_kvzyhe.png",
+    image: "https://res.cloudinary.com/dqobwse9q/image/upload/q_auto:good/v1755444815/siteplane_serenity_slawi_kvzyhe.png",
     name: "Siteplan Sapphire Serenity Slawi",
     description:
       "Masterplan perumahan Sapphire Serenity Slawi yang menampilkan layout, jalan, ruang terbuka hijau, dan fasilitas umum.",
@@ -727,7 +727,7 @@ export default function Properties() {
           <div className="specifications-container">
             <div className="specifications-image">
               <Image
-                src="https://res.cloudinary.com/dqobwse9q/image/upload/q_10/v1754637084/TYPE_85_1_i718cl.png"
+                src="https://res.cloudinary.com/dqobwse9q/image/upload/q_auto:good/v1754637084/TYPE_85_1_i718cl.png"
                 alt="Spesifikasi Rumah"
                 width={600}
                 height={800}
