@@ -341,8 +341,8 @@ export default function Properties() {
     {
       id: 1,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-75.png",
       name: "Tipe 75",
@@ -357,8 +357,8 @@ export default function Properties() {
     {
       id: 2,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-85.png",
       name: "Tipe 85",
@@ -373,8 +373,8 @@ export default function Properties() {
     {
       id: 3,
       images: [
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071336/Type_85_zmze7h.avif",
-        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_800,h_600,c_fill,f_auto,q_auto:eco/v1761071337/type_90_qpwdco.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071336/Type_85_zmze7h.avif",
+        "https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_285,c_fill,f_auto,q_auto:low/v1761071337/type_90_qpwdco.avif",
       ],
       floorPlan: "/denah-type-90.png",
       name: "Tipe 90",
