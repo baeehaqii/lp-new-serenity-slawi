@@ -50,14 +50,14 @@ export default function SimulasiKPRTanpaBunga() {
             fontWeight: '700',
             color: '#0f172a',
             marginBottom: '4px',
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>
             Simulasi KPR
           </h2>
           <p style={{ 
             fontSize: '20px',
             color: '#64748b',
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>
             Hitung estimasi cicilan KPR Anda dengan mudah
           </p>
@@ -79,7 +79,7 @@ export default function SimulasiKPRTanpaBunga() {
                 fontWeight: '700',
                 color: '#1e293b',
                 marginBottom: '6px',
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'inherit'
               }}>
                 Harga Properti
               </label>
@@ -95,7 +95,7 @@ export default function SimulasiKPRTanpaBunga() {
                   fontSize: '14px',
                   color: '#334155',
                   backgroundColor: '#ffffff',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   outline: 'none'
                 }}
               />
@@ -109,7 +109,7 @@ export default function SimulasiKPRTanpaBunga() {
                 fontWeight: '700',
                 color: '#1e293b',
                 marginBottom: '6px',
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'inherit'
               }}>
                 Uang Muka (DP)
               </label>
@@ -125,7 +125,7 @@ export default function SimulasiKPRTanpaBunga() {
                   fontSize: '14px',
                   color: '#334155',
                   backgroundColor: '#ffffff',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   outline: 'none'
                 }}
               />
@@ -140,7 +140,7 @@ export default function SimulasiKPRTanpaBunga() {
                   fontWeight: '700',
                   color: '#1e293b',
                   marginBottom: '6px',
-                  fontFamily: 'Poppins, sans-serif'
+                  fontFamily: 'inherit'
                 }}>
                   Jangka Waktu (Tahun)
                 </label>
@@ -157,7 +157,7 @@ export default function SimulasiKPRTanpaBunga() {
                     fontSize: '14px',
                     color: '#334155',
                     backgroundColor: '#ffffff',
-                    fontFamily: 'Poppins, sans-serif',
+                    fontFamily: 'inherit',
                     outline: 'none'
                   }}
                 />
@@ -169,7 +169,7 @@ export default function SimulasiKPRTanpaBunga() {
                   fontWeight: '700',
                   color: '#1e293b',
                   marginBottom: '6px',
-                  fontFamily: 'Poppins, sans-serif'
+                  fontFamily: 'inherit'
                 }}>
                   Suku Bunga (%)
                 </label>
@@ -187,7 +187,7 @@ export default function SimulasiKPRTanpaBunga() {
                     fontSize: '14px',
                     color: '#334155',
                     backgroundColor: '#ffffff',
-                    fontFamily: 'Poppins, sans-serif',
+                    fontFamily: 'inherit',
                     outline: 'none'
                   }}
                 />
@@ -209,7 +209,7 @@ export default function SimulasiKPRTanpaBunga() {
                 fontSize: '12px',
                 fontWeight: '600',
                 marginBottom: '6px',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'inherit',
                 margin: 0
               }}>
                 Cicilan Per Bulan
@@ -217,7 +217,7 @@ export default function SimulasiKPRTanpaBunga() {
               <p style={{ 
                 fontSize: '36px',
                 fontWeight: '800',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'inherit',
                 margin: '8px 0 0 0',
                 lineHeight: 1
               }}>
@@ -238,7 +238,7 @@ export default function SimulasiKPRTanpaBunga() {
                 color: '#64748b',
                 fontWeight: '500',
                 margin: 0,
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'inherit'
               }}>
                 Jumlah Pinjaman
               </p>
@@ -247,7 +247,7 @@ export default function SimulasiKPRTanpaBunga() {
                 fontWeight: '700',
                 color: '#0f172a',
                 margin: '6px 0 0 0',
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'inherit'
               }}>
                 {formatIDR(Math.round(jumlahPinjaman))}
               </p>
@@ -265,7 +265,7 @@ export default function SimulasiKPRTanpaBunga() {
                 fontSize: '12px',
                 color: '#713f12',
                 margin: 0,
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'inherit'
               }}>
                 <span style={{ fontWeight: '700' }}>*</span> Estimasi tanpa bunga. Untuk simulasi dengan bunga gunakan komponen simulasi KPR standar.
               </p>

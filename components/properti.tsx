@@ -107,7 +107,7 @@ function SimulasiKPRContent({
             fontWeight: '600',
             color: '#1e293b',
             marginBottom: '8px',
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>Harga Properti</label>
           <div className="kpr-editable-field" style={{ position: 'relative' }}>
             <input
@@ -128,7 +128,7 @@ function SimulasiKPRContent({
                 fontSize: '14px',
                 color: '#334155',
                 backgroundColor: '#ffffff',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'inherit',
                 outline: 'none',
                 transition: 'all 0.2s ease',
                 cursor: 'text'
@@ -144,7 +144,7 @@ function SimulasiKPRContent({
             fontWeight: '700',
             color: '#1e293b',
             marginBottom: '6px',
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>
             Uang Muka (DP)
           </label>
@@ -167,7 +167,7 @@ function SimulasiKPRContent({
                 fontSize: '14px',
                 color: '#334155',
                 backgroundColor: '#ffffff',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'inherit',
                 outline: 'none',
                 transition: 'all 0.2s ease',
                 cursor: 'text'
@@ -184,7 +184,7 @@ function SimulasiKPRContent({
               fontWeight: '700',
               color: '#1e293b',
               marginBottom: '6px',
-              fontFamily: 'Poppins, sans-serif'
+              fontFamily: 'inherit'
             }}>
               Jangka Waktu (Tahun)
             </label>
@@ -205,7 +205,7 @@ function SimulasiKPRContent({
                   fontSize: '14px',
                   color: '#334155',
                   backgroundColor: '#ffffff',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   outline: 'none',
                   transition: 'all 0.2s ease',
                   cursor: focusedField === 'tahun' ? 'text' : 'default'
@@ -220,7 +220,7 @@ function SimulasiKPRContent({
               fontWeight: '700',
               color: '#1e293b',
               marginBottom: '6px',
-              fontFamily: 'Poppins, sans-serif'
+              fontFamily: 'inherit'
             }}>
               Suku Bunga (%)
             </label>
@@ -231,7 +231,7 @@ function SimulasiKPRContent({
                 onChange={(e) => onBungaChange(e.target.value)}
                 onFocus={() => setFocusedField('bunga')}
                 onBlur={() => setFocusedField(null)}
-                placeholder="masukan suku bunga, contoh 5,5%"
+                placeholder="masukan contoh 5,5%"
                 min="0"
                 step="0.1"
                 style={{
@@ -242,7 +242,7 @@ function SimulasiKPRContent({
                   fontSize: '14px',
                   color: '#334155',
                   backgroundColor: '#ffffff',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   outline: 'none',
                   transition: 'all 0.2s ease',
                   cursor: focusedField === 'bunga' ? 'text' : 'default'
@@ -264,7 +264,7 @@ function SimulasiKPRContent({
           <p style={{
             fontSize: '12px',
             fontWeight: '600',
-            fontFamily: 'Poppins, sans-serif',
+            fontFamily: 'inherit',
             margin: 0,
             marginBottom: '6px'
           }}>
@@ -273,7 +273,7 @@ function SimulasiKPRContent({
           <p style={{
             fontSize: '28px',
             fontWeight: '800',
-            fontFamily: 'Poppins, sans-serif',
+            fontFamily: 'inherit',
             margin: '8px 0 0 0',
             lineHeight: 1
           }}>
@@ -293,7 +293,7 @@ function SimulasiKPRContent({
             color: '#64748b',
             fontWeight: '500',
             margin: 0,
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>
             Jumlah Pinjaman
           </p>
@@ -302,7 +302,7 @@ function SimulasiKPRContent({
             fontWeight: '700',
             color: '#0f172a',
             margin: '6px 0 0 0',
-            fontFamily: 'Poppins, sans-serif'
+            fontFamily: 'inherit'
           }}>
             {hargaNum > 0 ? `Rp ${Math.round(jumlahPinjaman).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}` : '-'}
           </p>
@@ -857,7 +857,7 @@ export default function Properties() {
                   cursor: 'pointer',
                   borderBottom: modalTab === 'detail' ? '2px solid #831016' : 'none',
                   transition: 'all 0.2s',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   marginBottom: '-1px'
                 }}
               >
@@ -875,7 +875,7 @@ export default function Properties() {
                   cursor: 'pointer',
                   borderBottom: modalTab === 'simulasi' ? '2px solid #831016' : 'none',
                   transition: 'all 0.2s',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'inherit',
                   marginBottom: '-1px'
                 }}
               >
