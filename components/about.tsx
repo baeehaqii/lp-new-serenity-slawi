@@ -27,11 +27,13 @@ export default function About() {
             {/* Container gambar */}
             <div className="about-image-container">
               <Image
-                src="https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_253,c_fill,f_auto,q_auto:low/v1761071337/type_90_qpwdco.avif"
+                src="https://res.cloudinary.com/dx8w9qwl6/image/upload/w_380,h_253,c_fill,f_auto,q_auto:eco/v1761071337/type_90_qpwdco.avif"
                 alt="Sapphire Serenity Slawi"
                 width={380}
                 height={253}
                 className="about-image"
+                sizes="(max-width: 768px) 100vw, 380px"
+                loading="lazy"
               />
             </div>
 

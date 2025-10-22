@@ -1516,25 +1516,40 @@ a {
 }
 
 .property-slider-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  /* Keep a small visible dot but increase the hit area for accessibility */
+  width: 44px; /* minimum touch target width */
+  height: 44px; /* minimum touch target height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-out;
   padding: 0;
 }
 
-.property-slider-dot:hover {
+.property-slider-dot::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.property-slider-dot:hover::before {
   background-color: rgba(255, 255, 255, 0.8);
   transform: scale(1.2);
 }
 
-.property-slider-dot.active {
+.property-slider-dot.active::before {
   background-color: #831016;
   width: 1.5rem;
+  height: 0.375rem;
   border-radius: 0.25rem;
+  transform: scale(1);
 }
 
 /* Property Slider Arrow Buttons */
@@ -1576,12 +1591,18 @@ a {
   }
 
   .property-slider-dot {
-    width: 0.375rem;
-    height: 0.375rem;
+    width: 44px;
+    height: 44px;
   }
 
-  .property-slider-dot.active {
-    width: 1.25rem;
+  .property-slider-dot::before {
+    width: 0.45rem;
+    height: 0.45rem;
+  }
+
+  .property-slider-dot.active::before {
+    width: 1.1rem;
+    height: 0.35rem;
   }
 
   .property-slider-arrow {
