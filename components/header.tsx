@@ -60,7 +60,12 @@ export default function Header() {
         </button>
 
         {/* Mobile Menu Button */}
-        <button className="header-mobile-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button
+          className="header-mobile-button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
+          aria-expanded={isMenuOpen}
+        >
           {isMenuOpen ? <X className="header-mobile-icon" /> : <Menu className="header-mobile-icon" />}
         </button>
       </div>

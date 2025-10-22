@@ -12,11 +12,12 @@ import CallToAction from "@/components/cta"
 import Accessibility from "@/components/accessibility"
 import Concepts from "@/components/concepts"
 import WhatsAppFloat from "@/components/whatsapp-float"
-import SimulasiKPRTanpaBunga from "@/components/simulasi-kpr-tanpa-bunga"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function HomePage() {
   return (
     <main>
+      <Analytics/>
       <Header />
       <Hero />
       <About />

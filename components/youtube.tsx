@@ -39,7 +39,7 @@ export default function YouTube() {
                                     position: 'relative',
                                     width: '100%',
                                     height: '400px',
-                                    backgroundImage: 'url(https://img.youtube.com/vi/6mo2w9uDpQ4/maxresdefault.jpg)',
+                                    backgroundImage: 'url(https://img.youtube.com/vi/6mo2w9uDpQ4/sddefault.jpg)',
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                     cursor: 'pointer',

@@ -8,8 +8,10 @@ import { Suspense } from "react"
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
   weight: ["300", "400", "500", "600", "700"],
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 })
 
 export const metadata: Metadata = {
@@ -54,16 +56,16 @@ export default function RootLayout({
         <link
           rel="preload"
           as="style"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=optional"
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=optional"
         />
         <noscript>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=optional"
           />
         </noscript>
 
@@ -82,24 +84,24 @@ export default function RootLayout({
         </Script>
 
         {/* Google Tag Manager */}
-        
+
         {/* End Google Tag Manager */}
 
         {/* Facebook Pixel Code */}
-        
+
         {/* End Facebook Pixel Code */}
 
         {/* Facebook Pixel (noscript) */}
-        
+
         {/* End Facebook Pixel (noscript) */}
 
         {/* TikTok Pixel Code */}
-        
+
         {/* End TikTok Pixel Code */}
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
-        
+
         {/* End Google Tag Manager (noscript) */}
 
         <Suspense fallback={null}>
