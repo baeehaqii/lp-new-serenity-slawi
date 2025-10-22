@@ -1,18 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { Suspense } from "react"
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "optional",
-  weight: ["300", "400", "500", "600", "700"],
-  preload: true,
-  fallback: ['system-ui', 'arial'],
-})
 
 export const metadata: Metadata = {
   title: "Sapphire Serenity Slawi",
@@ -99,7 +90,7 @@ export default function RootLayout({
 
         {/* End TikTok Pixel Code */}
       </head>
-      <body className={inter.className}>
+      <body style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
         {/* Google Tag Manager (noscript) */}
 
         {/* End Google Tag Manager (noscript) */}
