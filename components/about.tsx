@@ -42,7 +42,7 @@ export default function About() {
             <div className="about-content">
               <h2 className="about-title">Sapphire Serenity Slawi</h2>
               <p className="about-description">
-                Sapphire Serenity Slawi adalah perumahan Slawi premium yang berlokasi strategis di Jl. Gajah Mada, Kalisapu, Kec. Slawi, Kabupaten Tegal. Mengusung konsep Clean, Calm, & Classy, hunian ini memadukan desain modern dengan kenyamanan lingkungan, menghadirkan suasana tenang tanpa mengorbankan kemudahan akses ke pusat kota. Dekat dengan pusat perbelanjaan, fasilitas kesehatan, dan sekolah.
+                Berada di Jl. Gajah Mada, Kel. Kalisapu, Kec. Slawi, Kab. Tegal, Sapphire Serenity Slawi menghadirkan perumahan Slawi yang modern, estetik, dan fungsional. Dirancang dengan konsep <em>Calm, Clean, & Classy</em>, hunian ini menyatukan ruang untuk raga dan pikiran dengan akses mudah ke pusat kota, sekolah, area komersial, dan transportasi. Sapphire Serenity Slawi menjadi pilihan ideal bagi keluarga maupun profesional muda yang mencari hunian prestisus yang selaras dengan gaya hidup modern dan praktis di jantung Slawi.
               </p>
               <div>
                 {/* Ubah Link menjadi button untuk membuka modal */}

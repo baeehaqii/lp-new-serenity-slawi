@@ -21,7 +21,7 @@ export default function FAQ() {
         "Di Sapphire Serenity Slawi, kami menghadirkan lingkungan dengan fasilitas modern dan nyaman. Kami menyediakan fasilitas olahraga di sekitar area perumahan. Selain itu, kami juga menyediakan area terbuka hijau atau green area yang memberikan kesejukan dan ketenangan sehingga cocok digunakan untuk tempat rekreasi Anda. Kami juga mengutamakan keamanan dengan one gate system dan CCTV yang aktif 24 jam untuk menjaga kawasan tetap aman.",
     },
     {
-      question: "Apakah rumah di Samara Penusupan sudah memiliki sertifikat hak milik (SHM)?",
+      question: "Apakah rumah di Sapphire Serenity Slawi sudah memiliki sertifikat hak milik (SHM)?",
       answer:
         "Di Sapphire Serenity Slawi, kami sudah mengurus proses pemecahan sertifikat, jadi saat serah terima nanti, sertifikatnya langsung atas nama Bapak/Ibu. Hal ini mempermudah dan mempercepat proses kepemilikan tanpa perlu menunggu lama untuk pengurusan balik nama. Kami memastikan urusan administrasi menjadi lebih praktis untuk Bapak/Ibu, jadi begitu Anda menerima kunci, status kepemilikan sudah resmi atas nama Anda.",
     },
@@ -63,12 +63,12 @@ export default function FAQ() {
     {
       question: "Apakah ada pilihan untuk membayar tanpa KPR?",
       answer:
-        "Ya, di Samara Penusupan kami juga menyediakan pilihan untuk pembayaran tanpa menggunakan KPR. Pembayaran bisa dilakukan secara cash keras (pembayaran penuh sekaligus), soft cash (dengan uang muka lebih ringan dan sisanya dicicil), dan cash termin. Kami siap membantu menjelaskan setiap opsi dan memberi informasi terkait potongan harga atau promo yang berlaku untuk pembayaran tunai.",
+        "Ya, di Sapphire Serenity Slawi kami juga menyediakan pilihan untuk pembayaran tanpa menggunakan KPR. Pembayaran bisa dilakukan secara cash keras (pembayaran penuh sekaligus), soft cash (dengan uang muka lebih ringan dan sisanya dicicil), dan cash termin. Kami siap membantu menjelaskan setiap opsi dan memberi informasi terkait potongan harga atau promo yang berlaku untuk pembayaran tunai.",
     },
     {
       question: "Berapa uang muka dan cicilan per bulan yang harus dibayarkan?",
       answer:
-        "Untuk yang berpenghasilan tetap, uang muka mulai dari 5%. Sedangkan untuk wiraswasta, uang muka mulai dari 10%.",
+        "Untuk yang berpenghasilan tetap, uang muka mulai dari 5%. Sedangkan untuk wiraswasta, uang muka mulai dari 10%",
     },
   ]
 
@@ -82,7 +82,7 @@ export default function FAQ() {
     <section id="faq" className="faq-section">
       <div className="container">
         <div className="faq-header">
-          <h2 className="faq-title">Pertanyaan Umum Serenity Slawi</h2>
+          <h2 className="faq-title">FAQ</h2>
           <p className="faq-description">
             Temukan semua informasi yang Anda butuhkan di bagian FAQ kami.
           </p>

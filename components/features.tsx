@@ -4,33 +4,27 @@ export default function Features() {
   const features = [
     {
       icon: <ShieldCheck />,
-      title: "Security 24/7",
+      title: "Sistem Keamanan 24/7",
       description:
-        "Keamanan 24 jam dengan sistem CCTV dan petugas keamanan yang siap menjaga kenyamanan Anda.",
+        "Nikmati keamanan tinggi dengan one gate system, petugas sekuriti, CCTV, dan patroli 24 jam yang siap menjaga lingkungan hunian serta memberikan rasa aman dan tenang bagi Anda dan keluarga.",
     },
     {
-      icon: <Trees />,
-      title: "Area Hijau",
+      icon: <IdCard />,
+      title: "Privasi Penghuni Terjaga",
       description:
-        "Area hijau yang luas dan terawat dengan baik, memberikan suasana nyaman dan asri bagi penghuni.",
-    },
-    {
-      icon: <Cctv />,
-      title: "CCTV Kawasan",
-      description:
-        "Sistem CCTV yang terintegrasi untuk memantau keamanan kawasan secara real-time.",
+        "Rasakan ketenangan rumah yang jauh dari kebisingan, sehingga privasi Anda dan keluarga tetap terjaga.",
     },
     {
       icon: <CarFront />,
-      title: "Akses Mobil Lebar",
+      title: "Akses Jalan Lebar",
       description:
-        "Akses jalan yang lebar dan nyaman untuk kendaraan, memastikan mobilitas yang baik di dalam kawasan.",
+        "Jalan utama perumahan 8 meter, jalan lingkungan 6 meter. Dapatkan kemudahan mobilitas berkat akses yang luas dan bebas dari kemacetan. Anda bisa berkendara dengan lebih nyaman.",
     },
     {
-      icon: <CircleMinus />,
-      title: "One Gate System",
+      icon: <Trees />,
+      title: "Taman dan Ruang Terbuka Hijau",
       description:
-        "Sistem keamanan satu pintu yang memastikan akses terkontrol dan aman ke kawasan.",
+        "Rasakan kesejukan udara dan ketenangan hunian sembari menikmati pemandangan hijau yang memanjakan mata.",
     },
     // {
     //   icon: <IdCard />,
@@ -43,9 +37,9 @@ export default function Features() {
   return (
     <section id="fasilitas" className="features-section">
       <div className="container">
-        <h2 className="section-title">Clean, Calm, & Classy</h2>
+        <h2 className="section-title">Fasilitas Umum Sapphire Serenity Slawi</h2>
         <p className="section-subtitle">
-          Paduan Hunian Premium Modern dan Kenyamanan Alami di Pusat Slawi
+          Nikmati fasilitas dan kenyamanan yang dirancang khusus untuk menjaga kualitas hidup Anda dan keluarga.
         </p>
 
         <div className="features-grid">
