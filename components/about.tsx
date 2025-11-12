@@ -61,8 +61,8 @@ export default function About() {
           <div className="about-stats-grid">
             {/* Statistik - Projects Completed */}
             <div className="about-stat-card">
-              <div className="about-stat-value">1</div>
-              <div className="about-stat-label">Perumahan Terbaik di Tegal</div>
+              <div className="about-stat-value">3</div>
+              <div className="about-stat-label">Lokasi Terbaik di Jawa Bagian Utara</div>
             </div>
 
             {/* Statistik - Awards */}
@@ -73,8 +73,8 @@ export default function About() {
 
             {/* Statistik - Satisfied Clients */}
             <div className="about-stat-card">
-              <div className="about-stat-value">5+</div>
-              <div className="about-stat-label">CCTV Kawasan</div>
+              <div className="about-stat-value">3</div>
+              <div className="about-stat-label">Proyek Unggulan</div>
             </div>
 
             {/* Statistik - Years of Experience */}
@@ -106,7 +106,7 @@ export default function About() {
               </div>
               <div className="modal-description">
                 <p>
-                  Sapphire Serenity Slawi adalah perumahan Slawi premium yang berlokasi strategis di Jl. Gajah Mada, Kalisapu, Kec. Slawi, Kabupaten Tegal. Mengusung konsep Clean, Calm, & Classy, hunian ini memadukan desain modern dengan kenyamanan lingkungan, menghadirkan suasana tenang tanpa mengorbankan kemudahan akses ke pusat kota. Dekat dengan pusat perbelanjaan, fasilitas kesehatan, dan sekolah,
+                  Berada di Jl. Gajah Mada, Kel. Kalisapu, Kec. Slawi, Kab. Tegal, Sapphire Serenity Slawi menghadirkan perumahan Slawi yang modern, estetik, dan fungsional. Dirancang dengan konsep Calm, Clean, & Classy, hunian ini menyatukan ruang untuk raga dan pikiran dengan akses mudah ke pusat kota, sekolah, area komersial, dan transportasi.
                 </p>
 
                 <h3 className="modal-subtitle">Keunggulan Lokasi</h3>
@@ -115,8 +115,8 @@ export default function About() {
                   <li>5 menit ke fasilitas pendidikan</li>
                   <li>5 menit ke fasilitas perbelanjaan</li>
                   <li>2 menit ke pusat kota</li>
-                  <li>Dikelilingi area hijau dan pemandangan alami di sisi barat kota</li>
                   <li>Lingkungan tenang, bebas kebisingan dan polusi kota, namun tetap dekat pusat aktivitas penduduk</li>
+                  <li>Dikelilingi area hijau dan pemandangan alami di sisi barat kota</li>
                 </ul>
 
                 <h3 className="modal-subtitle">Fasilitas Premium</h3>
