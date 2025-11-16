@@ -64,13 +64,16 @@ export default function RootLayout({
           !function(e){"use strict";var t=function(t,n,r){var o,i=e.document,d=i.createElement("link");if(n)o=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=s[s.length-1]}var a=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",function t(e){if(i.body)return e();setTimeout(function(){t(e)})}(function(){o.parentNode.insertBefore(d,n?o:o.nextSibling)});var l=function(e){for(var t=d.href,n=a.length;n--;)if(a[n].href===t)return e();setTimeout(function(){l(e)})};function u(){d.addEventListener&&d.removeEventListener("load",u),d.media=r||"all"}return d.addEventListener&&d.addEventListener("load",u),d.onloadcssdefined=l,l(u),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
         `}} />
 
-        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-17369558016" strategy="lazyOnload" />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5PD8TXZSM3"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics-ga4" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17369558016');
+            gtag('config', 'G-5PD8TXZSM3');
           `}
         </Script>
 
