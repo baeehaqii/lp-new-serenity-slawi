@@ -33,7 +33,7 @@ export default function YouTube() {
                         <iframe
                             width="100%"
                             height="400"
-                            src="https://www.youtube.com/embed/6mo2w9uDpQ4?si=-zu4-JrJj6PP-oeu&autoplay=1"
+                            src="https://www.youtube.com/embed/k7Uo6XtKkMc"
                             title="Sapphire Serenity Slawi"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
