@@ -13,6 +13,7 @@ import Accessibility from "@/components/accessibility"
 import Concepts from "@/components/concepts"
 import WhatsAppFloat from "@/components/whatsapp-float"
 import { Analytics } from "@vercel/analytics/next"
+import PaymentSchemesDocuments from "@/components/payment-schemes-documents"
 
 export default function HomePage() {
   return (
@@ -25,6 +26,7 @@ export default function HomePage() {
       <Accessibility />
       <Features />
       <Concepts />
+      <PaymentSchemesDocuments />
       <Gallery />
       <YouTube />
       <Testimonials />

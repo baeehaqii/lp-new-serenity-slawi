@@ -37,9 +37,9 @@ export default function Features() {
   return (
     <section id="fasilitas" className="features-section">
       <div className="container">
-        <h2 className="section-title">Fasilitas Umum Sapphire Serenity Slawi</h2>
+        <h2 className="section-title">Calm, Clean, & Classy</h2>
         <p className="section-subtitle">
-          Nikmati fasilitas dan kenyamanan yang dirancang khusus untuk menjaga kualitas hidup Anda dan keluarga.
+          Hunian Nyaman dengan Sentuhan Elegan
         </p>
 
         <div className="features-grid">
