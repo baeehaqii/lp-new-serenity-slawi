@@ -6,9 +6,9 @@ export default function WhatsAppFloat() {
   const handleClick = () => {
     // Track WhatsApp Float button click with Facebook Pixel
     if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "WhatsAppFloatClick")
+      (window as any).fbq("track", "AddToCart")
     }
-    
+
     // Replace with your WhatsApp number (format: country code + number without + or spaces)
     const phoneNumber = "62811261740" // Example: Indonesian number
     const message = encodeURIComponent("Halo, saya tertarik dengan Sapphire Serenity Slawi")

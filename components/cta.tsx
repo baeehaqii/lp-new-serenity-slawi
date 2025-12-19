@@ -4,9 +4,9 @@ import { Phone, ClipboardList, Percent } from "lucide-react"
 import Link from "next/link"
 
 export default function CallToAction() {
-  const handleCTAClick = (eventName: string) => {
+  const handleCTAClick = () => {
     if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", eventName)
+      (window as any).fbq("track", "AddToCart")
     }
   }
 
@@ -25,7 +25,7 @@ export default function CallToAction() {
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button cta-button-primary"
-              onClick={() => handleCTAClick("WhatsappClick")}
+              onClick={() => handleCTAClick()}
             >
               <Phone className="cta-button-icon" />
               Whatsapp Kami
@@ -36,7 +36,7 @@ export default function CallToAction() {
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button cta-button-outline"
-              onClick={() => handleCTAClick("PromoClick")}
+              onClick={() => handleCTAClick()}
             >
               <Percent className="cta-button-icon" />
               Dapatkan Promo
