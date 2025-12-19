@@ -1,3 +1,5 @@
+'use client'
+
 import { Phone, ClipboardList, Percent } from "lucide-react"
 import Link from "next/link"
 
