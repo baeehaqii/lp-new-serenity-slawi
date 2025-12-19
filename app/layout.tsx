@@ -64,25 +64,29 @@ export default function RootLayout({
           !function(e){"use strict";var t=function(t,n,r){var o,i=e.document,d=i.createElement("link");if(n)o=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=s[s.length-1]}var a=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",function t(e){if(i.body)return e();setTimeout(function(){t(e)})}(function(){o.parentNode.insertBefore(d,n?o:o.nextSibling)});var l=function(e){for(var t=d.href,n=a.length;n--;)if(a[n].href===t)return e();setTimeout(function(){l(e)})};function u(){d.addEventListener&&d.removeEventListener("load",u),d.media=r||"all"}return d.addEventListener&&d.addEventListener("load",u),d.onloadcssdefined=l,l(u),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
         `}} />
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-5PD8TXZSM3"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics-ga4" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-5PD8TXZSM3');
-          `}
-        </Script>
-
         {/* Google Tag Manager */}
 
         {/* End Google Tag Manager */}
 
         {/* Facebook Pixel Code */}
-
+        <Script
+          id="fb-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '1151135900506438');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
         {/* End Facebook Pixel Code */}
 
         {/* Facebook Pixel (noscript) */}
@@ -97,6 +101,18 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
 
         {/* End Google Tag Manager (noscript) */}
+
+        {/* Facebook Pixel (noscript) */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1151135900506438&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+        {/* End Facebook Pixel (noscript) */}
 
         <Suspense fallback={null}>
           <ThemeProvider>{children}</ThemeProvider>
