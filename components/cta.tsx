@@ -21,18 +21,18 @@ export default function CallToAction() {
 
           <div className="cta-buttons">
             <Link
-              href="https://wa.me/62811261740?text=Halo,%20saya%20tertarik%20dengan%20properti%20Sapphire%20Serenity%20Slawi"
+              href="https://wa.me/62811261740?text=Halo%20kak,%20saya%20dapat%20informasi%20dari%20Facebook,%20boleh%20minta%20tolong%20informasi%20selengkapnya%20tentang%20perumahan%20Sapphire%20Serenity%20Slawi"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button cta-button-primary"
               onClick={() => handleCTAClick()}
             >
               <Phone className="cta-button-icon" />
-              Whatsapp Kami
+              Hubungi Kami
             </Link>
             <Link
               //border cta
-              href="https://wa.me/62811261740?text=Halo,%20saya%20tertarik%20dengan%20properti%20Sapphire%20Serenity%20Slawi"
+              href="https://wa.me/62811261740?text=Halo%20kak,%20saya%20dapat%20informasi%20dari%20Facebook,%20boleh%20minta%20tolong%20informasi%20selengkapnya%20tentang%20perumahan%20Sapphire%20Serenity%20Slawi"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button cta-button-outline"
